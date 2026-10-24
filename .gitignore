@@ -1,0 +1,10 @@
+cat > .gitignore <<'EOF'
+.env
+.env.*
+compute.env
+*.key
+.venv/
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+EOF
