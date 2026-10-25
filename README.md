@@ -1,44 +1,38 @@
-cat > README.md <<'EOF'
 # When More Evidence Misleads: Evaluating Hybrid Collusion Detectors
 
-## Overview
+**Apart Research AI Collusion Sprint 2026 — Track 2 (Detection and Audit)**
 
-This project investigates whether combining AI agents' communications
-and observable actions improves the detection of collusion compared
-with monitoring either source independently.
+This project investigates whether public communication combined with observable agent actions improves detection of *prohibited coordination*, and when misleading communication undermines that improvement.
 
-The research is conducted as part of the Apart Research AI Collusion
-Research Sprint (October 2026), Track 2: Detection and Audit of Collusion.
+## Project layout
 
-## Definition of Collusion
+- `src/pipeline.py` — parses endogenous-game JSON into separated observable channels and diagnostics.
+- `notebooks/01_exploration.ipynb` — inspect the data and document initial observations.
+- `experiments/` — commands and future experimental configurations.
+- `results/` — generated data/metrics (avoid secrets or private information).
+- `docs/research_design.md` — operational definition, labeling and evaluation protocol.
+- `docs/results_notes.md` — honest, dated observations and limitations.
+- `tests/` — minimal pipeline checks.
 
-Collusion is coordination between two or more AI agents to pursue a
-shared objective that violates an established rule, agreement, or
-legitimate principal's interests.
+## Quick start
 
-Independent similar behaviour, legitimate cooperation, and individual
-dishonesty do not automatically constitute collusion.
+From the research repository root:
 
-## Research Questions
+```bash
+python -m src.pipeline \
+  --input ~/collusion_hackathon/llm-trust-breaking/outputs/experiments/diners/2agents/openai_gpt-4o-mini_endogenous.json \
+  --output results/diners_smoke_episodes.json
+```
 
-1. Does hybrid monitoring outperform communication-only and action-only monitoring?
-2. Can misleading communications reduce the reliability of hybrid detectors?
-3. Can inconsistencies between messages and actions improve detection?
+Inspect `results/diners_smoke_episodes.json` and `results/summary.json`, then run the notebook. The extractor only requires Python's standard library.
 
-## Experimental Approach
+**Important:** The existing trust-breaking experiment does *not* supply verified collusion labels. Therefore the output intentionally sets `collusion_label` to `null`. Do not treat deception, commitments, or same-action choices as collusion ground truth.
 
-The project will compare:
+## Research status
 
-- Communication-only detection
-- Action-only detection
-- Hybrid communication-and-action detection
-- Structured communication-action inconsistency detection
-
-Evaluation will use labelled multi-agent interaction trajectories.
-Collusion ground truth must be established independently of the
-detectors' observations.
-
-## Status
-
-Research environment setup and experimental development in progress.
-EOF
+- [x] First two-agent diners simulation output inspected.
+- [x] Data extraction and analysis scaffold.
+- [ ] Define validated collusion/non-collusion experimental conditions.
+- [ ] Generate matched labelled trajectories.
+- [ ] Compare detectors on held-out episodes.
+- [ ] Report limitations and final results.
