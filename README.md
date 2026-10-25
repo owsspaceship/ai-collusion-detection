@@ -10,6 +10,7 @@ This project investigates whether public communication combined with observable 
 - `notebooks/01_exploration.ipynb` — inspect the data and document initial observations.
 - `experiments/` — commands and future experimental configurations.
 - `results/` — generated data/metrics (avoid secrets or private information).
+- `docs/research_report.pdf` — typeset research-paper report; source: `docs/research_report.md`.
 - `docs/research_design.md` — operational definition, labeling and evaluation protocol.
 - `docs/results_notes.md` — honest, dated observations and limitations.
 - `tests/` — minimal pipeline checks.
@@ -36,3 +37,14 @@ Inspect `results/diners_smoke_episodes.json` and `results/summary.json`, then ru
 - [ ] Generate matched labelled trajectories.
 - [ ] Compare detectors on held-out episodes.
 - [ ] Report limitations and final results.
+
+## Research Paper
+
+**When More Evidence Misleads: Evaluating Hybrid Collusion Detectors**
+
+Research conducted for the Apart Research AI Collusion Research Sprint 2026, Track 2: Detection and Audit of Collusion.
+
+The paper examines whether combining public communication and observable actions can produce false-positive collusion alarms.
+
+- [Read the research paper (PDF)](docs/AI_Collusion_Sprint_Submission.pdf)
+- [Download the editable Word document](docs/AI_Collusion_Sprint_Submission.docx)
